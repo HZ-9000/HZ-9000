@@ -6,7 +6,7 @@
     <a href="https://zachheimbigner.io/">home</a> |
     <a href="https://zachheimbigner.io/projects">projects</a> |
     <a href="https://zachheimbigner.io/experience">resume</a> |
-    <a href="">email</a>
+    <a href="mailto:zach@zachheimbigner.io">email</a>
   </samp>
 </div>
 
