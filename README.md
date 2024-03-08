@@ -1,6 +1,3 @@
-![Light house hero image](https://user-images.githubusercontent.com/72225524/224522254-cae98082-0238-4008-8c31-bc8d288fe7a0.png)
-
-# 
 <div align='center'>
   <samp>
     <a href="https://zachheimbigner.io/">home</a> |
