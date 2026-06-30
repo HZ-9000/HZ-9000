@@ -18,6 +18,7 @@
           animation: gradientShift 8s ease infinite;
           position: relative;
           overflow: hidden;
+          border-radius: 16px;
           font-family: "JetBrains Mono", monospace;
         }
 
