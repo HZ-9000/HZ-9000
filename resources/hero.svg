@@ -1,31 +1,124 @@
-<svg fill="none" viewBox="0 0 600 90" width="600" height="90" xmlns="http://www.w3.org/2000/svg">
+<svg fill="none" viewBox="0 0 800 120" width="800" height="120" xmlns="http://www.w3.org/2000/svg">
   <foreignObject width="100%" height="100%">
     <div xmlns="http://www.w3.org/1999/xhtml">
       <style>
-        .jetbrains-mono-hero {
-            font-family: "JetBrains Mono", monospace;
-            font-optical-sizing: auto;
-            font-weight: 100;
-            font-style: normal;
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&amp;display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        .hero {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 800px;
+          height: 120px;
+          background: linear-gradient(135deg, #0a0a0a 0%, #1a0a00 45%, #ff6b00 100%);
+          background-size: 200% 200%;
+          animation: gradientShift 8s ease infinite;
+          position: relative;
+          overflow: hidden;
+          font-family: "JetBrains Mono", monospace;
         }
 
-        .container {
-          display: flex;
-          justify-content: center;
+        .hero::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 107, 0, 0.03) 2px,
+            rgba(255, 107, 0, 0.03) 4px
+          );
+          pointer-events: none;
+          animation: scanline 6s linear infinite;
+        }
 
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
-          color: white;
+        .hero::after {
+          content: "";
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle, rgba(255, 107, 0, 0.12) 0%, transparent 60%);
+          animation: pulse 4s ease-in-out infinite;
+          pointer-events: none;
+        }
+
+        .username-row {
+          display: flex;
+          align-items: center;
+          height: 52px;
+        }
+
+        .prefix {
+          color: #ff6b00;
+          font-size: 36px;
+          font-weight: 700;
+          margin-right: 4px;
+          animation: fadeIn 0.5s ease 0.2s both;
+        }
+
+        .typewriter {
+          display: inline-block;
+          overflow: hidden;
+          white-space: nowrap;
+          border-right: 3px solid #ff6b00;
+          font-size: 36px;
+          font-weight: 700;
+          color: #ffffff;
+          width: 0;
+          animation:
+            typing 1.8s steps(7, end) 0.5s forwards,
+            blink 0.7s step-end 2.3s infinite,
+            glow 2s ease-in-out 2.3s infinite;
+          text-shadow: 0 0 20px rgba(255, 107, 0, 0.6);
+        }
+
+        @keyframes gradientShift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+
+        @keyframes scanline {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(4px); }
+        }
+
+        @keyframes pulse {
+          0%, 100% { opacity: 0.4; transform: scale(1); }
+          50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        @keyframes typing {
+          from { width: 0; }
+          to { width: 7.2ch; }
+        }
+
+        @keyframes blink {
+          50% { border-color: transparent; }
+        }
+
+        @keyframes glow {
+          0%, 100% { text-shadow: 0 0 20px rgba(255, 107, 0, 0.6); }
+          50% { text-shadow: 0 0 30px rgba(255, 107, 0, 1), 0 0 60px rgba(255, 107, 0, 0.4); }
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
         }
       </style>
 
-        <div class="container">
-          <div class="jetbrains-mono-hero">
-            <h1>HZ-9000</h1>
-          </div>
+      <div class="hero">
+        <div class="username-row">
+          <span class="prefix">&gt;</span>
+          <span class="typewriter">HZ-9000</span>
         </div>
+      </div>
     </div>
-
   </foreignObject>
 </svg>
