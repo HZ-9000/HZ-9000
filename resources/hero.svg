@@ -1,125 +1,298 @@
-<svg fill="none" viewBox="0 0 800 120" width="800" height="120" xmlns="http://www.w3.org/2000/svg">
-  <foreignObject width="100%" height="100%">
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&amp;display=swap');
+<svg fill="none" viewBox="0 0 800 220" width="800" height="220" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="roundClip">
+      <rect width="800" height="220" rx="16" ry="16"/>
+    </clipPath>
+  </defs>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+  <g clip-path="url(#roundClip)">
+    <foreignObject width="800" height="220">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&amp;display=swap');
 
-        .hero {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          width: 800px;
-          height: 120px;
-          background: linear-gradient(135deg, #0a0a0a 0%, #1a0a00 45%, #ff6b00 100%);
-          background-size: 200% 200%;
-          animation: gradientShift 8s ease infinite;
-          position: relative;
-          overflow: hidden;
-          border-radius: 16px;
-          font-family: "JetBrains Mono", monospace;
-        }
+          * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .hero::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(255, 107, 0, 0.03) 2px,
-            rgba(255, 107, 0, 0.03) 4px
-          );
-          pointer-events: none;
-          animation: scanline 6s linear infinite;
-        }
+          .hero {
+            position: relative;
+            width: 800px;
+            height: 220px;
+            overflow: hidden;
+            border-radius: 16px;
+            font-family: "JetBrains Mono", monospace;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a00 45%, #ff6b00 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+          }
 
-        .hero::after {
-          content: "";
-          position: absolute;
-          top: -50%;
-          left: -50%;
-          width: 200%;
-          height: 200%;
-          background: radial-gradient(circle, rgba(255, 107, 0, 0.12) 0%, transparent 60%);
-          animation: pulse 4s ease-in-out infinite;
-          pointer-events: none;
-        }
+          .grid {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 107, 0, 0.18) 1px, transparent 1px);
+            background-size: 28px 28px;
+            animation: gridDrift 12s linear infinite;
+            opacity: 0.5;
+          }
 
-        .username-row {
-          display: flex;
-          align-items: center;
-          height: 52px;
-        }
+          .particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+          }
 
-        .prefix {
-          color: #ff6b00;
-          font-size: 36px;
-          font-weight: 700;
-          margin-right: 4px;
-          animation: fadeIn 0.5s ease 0.2s both;
-        }
+          .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: #ff6b00;
+            opacity: 0;
+            animation: floatUp 6s ease-in infinite;
+          }
 
-        .typewriter {
-          display: inline-block;
-          overflow: hidden;
-          white-space: nowrap;
-          border-right: 3px solid #ff6b00;
-          font-size: 36px;
-          font-weight: 700;
-          color: #ffffff;
-          width: 0;
-          animation:
-            typing 1.8s steps(7, end) 0.5s forwards,
-            blink 0.7s step-end 2.3s infinite,
-            glow 2s ease-in-out 2.3s infinite;
-          text-shadow: 0 0 20px rgba(255, 107, 0, 0.6);
-        }
+          .p1  { width: 3px; height: 3px; left: 8%;  bottom: -4px; animation-delay: 0s;   animation-duration: 5s; }
+          .p2  { width: 2px; height: 2px; left: 18%; bottom: -4px; animation-delay: 1.2s; animation-duration: 7s; }
+          .p3  { width: 4px; height: 4px; left: 32%; bottom: -4px; animation-delay: 0.6s; animation-duration: 6s; }
+          .p4  { width: 2px; height: 2px; left: 48%; bottom: -4px; animation-delay: 2.4s; animation-duration: 8s; }
+          .p5  { width: 3px; height: 3px; left: 62%; bottom: -4px; animation-delay: 0.9s; animation-duration: 5.5s; }
+          .p6  { width: 2px; height: 2px; left: 74%; bottom: -4px; animation-delay: 3.1s; animation-duration: 7.5s; }
+          .p7  { width: 4px; height: 4px; left: 86%; bottom: -4px; animation-delay: 1.8s; animation-duration: 6.5s; }
+          .p8  { width: 2px; height: 2px; left: 94%; bottom: -4px; animation-delay: 4s;   animation-duration: 9s; }
+          .p9  { width: 3px; height: 3px; left: 55%; bottom: -4px; animation-delay: 2s;   animation-duration: 6s; }
+          .p10 { width: 2px; height: 2px; left: 25%; bottom: -4px; animation-delay: 3.5s; animation-duration: 8s; }
 
-        @keyframes gradientShift {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
+          .shimmer {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+              105deg,
+              transparent 40%,
+              rgba(255, 180, 100, 0.08) 45%,
+              rgba(255, 255, 255, 0.12) 50%,
+              rgba(255, 180, 100, 0.08) 55%,
+              transparent 60%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 5s ease-in-out infinite;
+            pointer-events: none;
+          }
 
-        @keyframes scanline {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(4px); }
-        }
+          .scanlines {
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+              0deg,
+              transparent,
+              transparent 2px,
+              rgba(255, 107, 0, 0.03) 2px,
+              rgba(255, 107, 0, 0.03) 4px
+            );
+            animation: scanline 6s linear infinite;
+            pointer-events: none;
+          }
 
-        @keyframes pulse {
-          0%, 100% { opacity: 0.4; transform: scale(1); }
-          50% { opacity: 0.8; transform: scale(1.05); }
-        }
+          .glow-orb {
+            position: absolute;
+            top: -40%;
+            left: -20%;
+            width: 60%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255, 107, 0, 0.15) 0%, transparent 65%);
+            animation: orbPulse 4s ease-in-out infinite;
+            pointer-events: none;
+          }
 
-        @keyframes typing {
-          from { width: 0; }
-          to { width: 7.2ch; }
-        }
+          .glow-orb-2 {
+            position: absolute;
+            bottom: -50%;
+            right: -10%;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.1) 0%, transparent 60%);
+            animation: orbPulse 5s ease-in-out 2s infinite;
+            pointer-events: none;
+          }
 
-        @keyframes blink {
-          50% { border-color: transparent; }
-        }
+          .content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+          }
 
-        @keyframes glow {
-          0%, 100% { text-shadow: 0 0 20px rgba(255, 107, 0, 0.6); }
-          50% { text-shadow: 0 0 30px rgba(255, 107, 0, 1), 0 0 60px rgba(255, 107, 0, 0.4); }
-        }
+          .username-row {
+            display: flex;
+            align-items: center;
+            height: 52px;
+          }
 
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(8px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      </style>
+          .prefix {
+            color: #ff6b00;
+            font-size: 42px;
+            font-weight: 700;
+            margin-right: 6px;
+            animation: fadeIn 0.5s ease 0.2s both, prefixFlicker 4s ease 3s infinite;
+          }
 
-      <div class="hero">
-        <div class="username-row">
-          <span class="prefix">&gt;</span>
-          <span class="typewriter">HZ-9000</span>
+          .typewriter-wrap {
+            position: relative;
+          }
+
+          .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #ff6b00;
+            font-size: 42px;
+            font-weight: 700;
+            color: #ffffff;
+            width: 0;
+            animation:
+              typing 1.8s steps(7, end) 0.5s forwards,
+              blink 0.7s step-end 2.3s infinite,
+              glow 2s ease-in-out 2.3s infinite,
+              glitch 4s ease 4s infinite;
+            text-shadow: 0 0 20px rgba(255, 107, 0, 0.6);
+          }
+
+          .typewriter-glitch {
+            position: absolute;
+            inset: 0;
+            font-size: 42px;
+            font-weight: 700;
+            color: #ff6b00;
+            opacity: 0;
+            pointer-events: none;
+            animation: glitchLayer 4s ease 4s infinite;
+          }
+
+          @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+          }
+
+          @keyframes gridDrift {
+            0% { background-position: 0 0; }
+            100% { background-position: 28px 28px; }
+          }
+
+          @keyframes floatUp {
+            0%   { opacity: 0; transform: translateY(0) scale(1); }
+            10%  { opacity: 0.8; }
+            90%  { opacity: 0.3; }
+            100% { opacity: 0; transform: translateY(-230px) scale(0.5); }
+          }
+
+          @keyframes shimmer {
+            0%, 100% { background-position: 200% 0; }
+            50% { background-position: -200% 0; }
+          }
+
+          @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(4px); }
+          }
+
+          @keyframes orbPulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.08); }
+          }
+
+          @keyframes typing {
+            from { width: 0; }
+            to { width: 7.2ch; }
+          }
+
+          @keyframes blink {
+            50% { border-color: transparent; }
+          }
+
+          @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 107, 0, 0.6); }
+            50% { text-shadow: 0 0 30px rgba(255, 107, 0, 1), 0 0 60px rgba(255, 107, 0, 0.4); }
+          }
+
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+
+          @keyframes prefixFlicker {
+            0%, 95%, 100% { opacity: 1; }
+            96% { opacity: 0.4; }
+            97% { opacity: 1; }
+            98% { opacity: 0.6; }
+          }
+
+          @keyframes glitch {
+            0%, 92%, 100% { transform: translate(0); }
+            93% { transform: translate(-2px, 1px); text-shadow: 2px 0 #ff6b00, -2px 0 #ff9500; }
+            94% { transform: translate(2px, -1px); text-shadow: -2px 0 #ff6b00, 2px 0 #ff9500; }
+            95% { transform: translate(0); text-shadow: 0 0 20px rgba(255, 107, 0, 0.6); }
+          }
+
+          @keyframes glitchLayer {
+            0%, 92%, 100% { opacity: 0; transform: translate(0); }
+            93% { opacity: 0.7; transform: translate(3px, 0); clip-path: inset(20% 0 50% 0); }
+            94% { opacity: 0.5; transform: translate(-3px, 0); clip-path: inset(60% 0 10% 0); }
+            95% { opacity: 0; }
+          }
+        </style>
+
+        <div class="hero">
+          <div class="grid"></div>
+          <div class="particles">
+            <span class="particle p1"></span>
+            <span class="particle p2"></span>
+            <span class="particle p3"></span>
+            <span class="particle p4"></span>
+            <span class="particle p5"></span>
+            <span class="particle p6"></span>
+            <span class="particle p7"></span>
+            <span class="particle p8"></span>
+            <span class="particle p9"></span>
+            <span class="particle p10"></span>
+          </div>
+          <div class="glow-orb"></div>
+          <div class="glow-orb-2"></div>
+          <div class="shimmer"></div>
+          <div class="scanlines"></div>
+          <div class="content">
+            <div class="username-row">
+              <span class="prefix">&gt;</span>
+              <div class="typewriter-wrap">
+                <span class="typewriter">HZ-9000</span>
+                <span class="typewriter-glitch">HZ-9000</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </foreignObject>
+    </foreignObject>
+
+    <!-- Animated circuit traces (native SVG) -->
+    <g fill="none" stroke="#ff6b00" stroke-width="1" opacity="0.2">
+      <path d="M0 55 H120 L160 35 H280" stroke-dasharray="8 6">
+        <animate attributeName="stroke-dashoffset" values="28;0" dur="3s" repeatCount="indefinite"/>
+      </path>
+      <path d="M800 165 H680 L640 185 H520" stroke-dasharray="8 6">
+        <animate attributeName="stroke-dashoffset" values="0;28" dur="3.5s" repeatCount="indefinite"/>
+      </path>
+      <path d="M0 180 H80 L120 160 H200" stroke-dasharray="6 8" opacity="0.6">
+        <animate attributeName="stroke-dashoffset" values="28;0" dur="4s" repeatCount="indefinite"/>
+      </path>
+      <path d="M800 40 H720 L680 60 H600" stroke-dasharray="6 8" opacity="0.6">
+        <animate attributeName="stroke-dashoffset" values="0;28" dur="4.5s" repeatCount="indefinite"/>
+      </path>
+    </g>
+
+    <!-- Corner nodes -->
+    <g fill="#ff6b00" opacity="0.35">
+      <circle cx="120" cy="55" r="2.5"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="2s" repeatCount="indefinite"/></circle>
+      <circle cx="680" cy="165" r="2.5"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/></circle>
+      <circle cx="80" cy="180" r="2"><animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite"/></circle>
+      <circle cx="720" cy="40" r="2"><animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.5s" repeatCount="indefinite"/></circle>
+    </g>
+  </g>
 </svg>
